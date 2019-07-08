@@ -3,6 +3,7 @@ const path = require('path');
 const express = require('express');
 const hbs = require('hbs');
 const geoCode = require('./utils/geocode');
+const geoCodeReverse = require('./utils/geocodeReverse');
 const foreCast = require('./utils/forecast');
 
 const app = express();
@@ -22,19 +23,26 @@ hbs.registerPartials(partialsPath);
 //Setuo static directory to serve
 app.use(express.static(publicDirectoryPath));
 
+
+
 app.get('', (req, res) => {
+
   res.render('index', {
-    title: 'Weather App',
+    title: 'Weather app',
     name: 'Brian Bawuah'
   });
 });
 
+
+
 app.get('/about', (req, res) => {
   res.render('about', {
     title: 'About page',
-    name: 'By Brian Bawuah'
+    name: 'Brian Bawuah'
   });
 });
+
+
 
 app.get('/help', (req, res) => {
   res.render('help', {
@@ -44,17 +52,24 @@ app.get('/help', (req, res) => {
   });
 });
 
-app.get('/products', (req, res) => {
+app.get('/location', (req, res) => {
 
-  if (!req.query.search) {
-    return res.send({
-      error: 'You must provide a search term'
+  geoCodeReverse(req.query.lng, req.query.lat, (error, data) => {
+    if (error) {
+      res.send({ error });
+    }
+
+    foreCast(req.query.lng, req.query.lat, (error, forecastData) => {
+      if (error) {
+        res.send({ error });
+      }
+      res.send({
+        city: data.location,
+        forecast: forecastData
+      });
     });
-  }
-  console.log(req.query);
-  res.send({
-    products: []
   });
+
 });
 
 app.get('/weather', (req, res) => {

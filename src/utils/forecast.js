@@ -8,6 +8,8 @@ const foreCast = (x, y, callback) => {
     // console.log(response.body.currently);
 
     const summary = body.daily.data[0].summary;
+    const temperatureLow = body.daily.data[0].temperatureMin;
+    const temperatureHigh = body.daily.data[0].temperatureMax;
     const temperature = body.currently.temperature;
     const precipProbability = body.currently.precipProbability;
 
@@ -17,7 +19,7 @@ const foreCast = (x, y, callback) => {
       callback('Unable to find location. Try another search', undefined);      
     } else {
 
-      callback(undefined, `${summary} Currently, it is ${temperature} degrees Celsius. There is ${precipProbability}% chance of rain.`);
+      callback(undefined, `${summary} Currently, it is ${temperature} degrees Celsius. The minimum temperature of today is ${temperatureLow}. The maximum temperature of the day is ${temperatureHigh} There is ${precipProbability}% chance of rain.`);
 
 
     }

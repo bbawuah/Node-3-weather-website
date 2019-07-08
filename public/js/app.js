@@ -2,8 +2,12 @@ const weatherForm = document.querySelector('form');
 const search = document.querySelector('input');
 const msgOne = document.querySelector('.msg1');
 const msgTwo = document.querySelector('.msg2');
+const currentLocBtn = document.querySelector('#current-loc');
 
 console.log('Javascript on the client side');
+
+
+
 
 msgOne.textContent = '';
 msgTwo.textContent = '';
@@ -31,7 +35,38 @@ weatherForm.addEventListener('submit', (e) => {
 
 });
 
+currentLocBtn.addEventListener('click', function (e) {
+  e.preventDefault();
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition((position) => {
+      const longitude = position.coords.longitude;
+      const latitude = position.coords.latitude;
 
+      msgOne.textContent = '';
+      msgTwo.textContent = 'Loading..';
+
+      fetch(`/location?lng=${longitude}&lat=${latitude}`).then((response) => {
+        response.json().then((data) => {
+          if (data.error) {
+            msgOne.textContent = data.error;
+            msgTwo.textContent = '';
+          }
+
+          else {
+            msgOne.textContent = data.city;
+            msgTwo.textContent = data.forecast;
+          }
+        });
+
+      });
+
+    });
+
+
+  }
+
+
+})
 
 
 
