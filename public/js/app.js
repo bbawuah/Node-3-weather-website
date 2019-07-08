@@ -57,16 +57,10 @@ currentLocBtn.addEventListener('click', function (e) {
             msgTwo.textContent = data.forecast;
           }
         });
-
       });
-
     });
-
-
   }
-
-
-})
+});
 
 
 

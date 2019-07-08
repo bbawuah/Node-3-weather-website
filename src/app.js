@@ -59,7 +59,7 @@ app.get('/location', (req, res) => {
       res.send({ error });
     }
 
-    foreCast(req.query.lng, req.query.lat, (error, forecastData) => {
+    foreCast(req.query.lat, req.query.lng, (error, forecastData) => {
       if (error) {
         res.send({ error });
       }
