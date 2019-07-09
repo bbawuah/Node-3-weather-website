@@ -9,13 +9,13 @@ const geoCodeReverse = (longitude, latitude, callback) => {
 
       console.log('Unable to find current location');
     } else {
-      console.log(callback(undefined, {
+      callback(undefined, {
 
         location: body.body.features[0].place_name,
         longitude: body.body.features[0].center[0],
         latitude: body.body.features[0].center[1]
        
-      }));
+      });
      
 
 
