@@ -27,6 +27,19 @@ footer {
   overflow-y: hidden;
 }
 
+.main-content section:first-of-type{
+  display: grid;
+}
+
+form{
+  display: grid
+}
+
+p:first-of-type{
+  justify-self: center;
+}
+
+
 header {
   display: flex;
   flex-direction: row;
@@ -84,15 +97,12 @@ form input, form button {
   border-radius: 7px;
   border: none;
   font-weight: bold;
+  justify-self: center;
 }
 
 form button{
   background: #B794F4;
   color: #fff;
-}
-
-.msg2{
-width: 50ch;
 }
 
 #current-loc{
@@ -120,8 +130,16 @@ form input:active {
 @media (max-width: 445px){
   form input, form button{
     display: block;
-    width: 100vw;
+    width: 90vw;
+    height: 3.7em;
     margin-bottom: .5em;
+    font-size: 1.05em;
+  }
+
+  p{
+    font-size: 1.3em;
+    font-weight: 400;
+
   }
 
 }
