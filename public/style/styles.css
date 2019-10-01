@@ -13,6 +13,7 @@ body {
 
 .main-content {
   display: grid;
+  padding: 1em;
   grid-gap: .5em;
 }
 
@@ -31,13 +32,11 @@ footer {
   display: grid;
 }
 
-form{
-  display: grid
+.main-content:nth-child(2){
+  display: grid;
 }
 
-p:first-of-type{
-  justify-self: center;
-}
+
 
 
 header {
@@ -97,7 +96,6 @@ form input, form button {
   border-radius: 7px;
   border: none;
   font-weight: bold;
-  justify-self: center;
 }
 
 form button{
@@ -128,17 +126,27 @@ form input:active {
 }
 
 @media (max-width: 445px){
+  form{
+    display: grid;
+  }
   form input, form button{
     display: block;
     width: 90vw;
     height: 3.7em;
     margin-bottom: .5em;
     font-size: 1.05em;
+    justify-self: center;
+    padding: 0;
+  }
+
+  .output{
+    padding: 0.5em;
   }
 
   p{
     font-size: 1.3em;
     font-weight: 400;
+    justify-self: center;
 
   }
 
