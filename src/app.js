@@ -14,7 +14,6 @@ const publicDirectoryPath = path.join(__dirname, '../public');
 const viewsPath = path.join(__dirname, '../templates/views');
 const partialsPath = path.join(__dirname, '../templates/partials');
 
-
 //Setup handlebars engine and views location
 app.set('view engine', 'hbs');
 app.set('views', viewsPath);
@@ -38,16 +37,6 @@ app.get('', (req, res) => {
 app.get('/about', (req, res) => {
   res.render('about', {
     title: 'About page',
-    name: 'Brian Bawuah'
-  });
-});
-
-
-
-app.get('/help', (req, res) => {
-  res.render('help', {
-    title: 'Help',
-    message: 'How can I help you?.',
     name: 'Brian Bawuah'
   });
 });
@@ -97,15 +86,6 @@ app.get('/weather', (req, res) => {
         address: req.query.address
       });
     });
-  });
-});
-
-
-app.get('/help/*', (req, res) => {
-  res.render('error', {
-    title: 'Help',
-    message: 'Help article not found',
-    name: 'Brian Bawuah'
   });
 });
 
