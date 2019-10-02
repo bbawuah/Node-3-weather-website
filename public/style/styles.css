@@ -98,6 +98,10 @@ form input, form button {
   font-weight: bold;
 }
 
+form input[type=text]{
+  padding-left: .7em;
+}
+
 form button{
   background: #B794F4;
   color: #fff;
